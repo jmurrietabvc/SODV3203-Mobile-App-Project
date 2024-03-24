@@ -7,7 +7,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -81,7 +80,7 @@ public class Dashboard extends AppCompatActivity {
                                 }
                             }).show();
                 }else if (nameView == nameView || emailView == emailView || phoneView == phoneView || nameTourView == nameTourView || totalItemsView == totalItemsView || totalPriceView == totalPriceView){
-                    Intent intent = new Intent(Dashboard.this, Tickets.class);
+                    Intent intent = new Intent(Dashboard.this, Itinerary.class);
                     startActivity(intent);
                 }
             }

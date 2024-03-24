@@ -5,7 +5,7 @@
 
     <meta-data
         android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyC21rkrY5NlN3BVzVfJIt-z4pQTYYgxJIE" />
+        android:value="" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TravelApp">
         <activity
-            android:name=".Tickets"
+            android:name=".Itinerary"
             android:exported="false" />
         <activity
             android:name=".Receipt"

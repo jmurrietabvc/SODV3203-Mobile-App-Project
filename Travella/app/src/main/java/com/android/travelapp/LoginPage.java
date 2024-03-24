@@ -68,7 +68,7 @@ public class LoginPage extends AppCompatActivity {
                     String loginPass = preferences.getString("pass","");
 
                     if (userValue.equals(loginUser) && passValue.equals(loginPass) || emailValue.equals(emailUser) && passValue.equals(loginPass)){
-                        Intent intent = new Intent(LoginPage.this, Dashboard.class);
+                        Intent intent = new Intent(LoginPage.this, CountrySelectionActivity.class);
                         startActivity(intent);
                         finish();
                         Toast.makeText(LoginPage.this, "Login", Toast.LENGTH_LONG).show();

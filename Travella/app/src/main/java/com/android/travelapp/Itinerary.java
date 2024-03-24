@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Tickets extends AppCompatActivity {
+public class Itinerary extends AppCompatActivity {
     TextView name, email, phone, nameTour, totalPeople, totalPrice;
     Button btnBack;
     AlertDialog dialog;
@@ -43,7 +43,7 @@ public class Tickets extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Tickets.this, Dashboard.class);
+                Intent intent = new Intent(Itinerary.this, Dashboard.class);
                 startActivity(intent);
                 finish();
             }
@@ -65,14 +65,14 @@ public class Tickets extends AppCompatActivity {
             totalPeople.setText(totalItemsView);
             totalPrice.setText("CAD" + totalPriceView);
         } else {
-            dialog = new AlertDialog.Builder(Tickets.this)
+            dialog = new AlertDialog.Builder(Itinerary.this)
                     .setTitle("Check Tickets")
                     .setMessage("Data is Empty")
                     .setIcon(android.R.drawable.ic_dialog_info)
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent intent = new Intent(Tickets.this, Dashboard.class);
+                            Intent intent = new Intent(Itinerary.this, Dashboard.class);
                             startActivity(intent);
                             finish();
                         }
