@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">Travella</string>
+
+    <string name="nameApp">Travella</string>
+    <string name="subtitleNameApp">Where Every Journey Begins</string>
+    <string name="versionApp">v1.0</string>
+    <string name="copyright">Developed by Jose Murrieta and Jess Wilkinson</string>
+    <string name="titleLogin"></string>
+
+    <string name="channel_name">Travellla App v1.0 (BETA)</string>
+    <string name="channel_desc">Bow Valley College Project</string>
+    <string-array name="countries">
+        <item>Canada</item>
+        <item>Ecuador</item>
+        <item>USA</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Greece</item>
+        <item>Japan</item>
+        <item>Australia</item>
+    </string-array>
+
+    <string-array name="cities_default">
+        <item>Niagara Falls</item>
+        <item>Galapagos Islands</item>
+        <item>Grand Canyon</item>
+        <item>Paris</item>
+    </string-array>
+
+    <string-array name="cities_canada">
+        <item>Niagara Falls</item>
+        <item>Banff</item>
+        <item>Toronto</item>
+        <item>Quebec City</item>
+    </string-array>
+
+    <string-array name="cities_ecuador">
+        <item>Galapagos Islands</item>
+        <item>Amazon Rainforest</item>
+        <item>Quilotoa</item>
+        <item>Otavalo</item>
+    </string-array>
+
+    <string-array name="cities_usa">
+        <item>Grand Canyon</item>
+        <item>New York City</item>
+        <item>Yellowstone National Park</item>
+        <item>California</item>
+    </string-array>
+
+    <string-array name="cities_france">
+        <item>Paris</item>
+        <item>Versailles</item>
+        <item>Normandy</item>
+    </string-array>
+
+    <string-array name="cities_italy">
+        <item>Rome</item>
+        <item>Venice</item>
+        <item>Florence</item>
+        <item>Pisa</item>
+    </string-array>
+
+    <string-array name="cities_greece">
+        <item>Athens</item>
+        <item>Santorini</item>
+        <item>Mykonos</item>
+        <item>Meteora</item>
+    </string-array>
+
+    <string-array name="cities_japan">
+        <item>Yamanashi</item>
+        <item>Tokyo</item>
+        <item>Kyoto</item>
+        <item>Hiroshima</item>
+    </string-array>
+
+    <string-array name="cities_australia">
+        <item>Sydney</item>
+        <item>Melbourne</item>
+        <item>Brisbane</item>
+    </string-array>
+</resources>

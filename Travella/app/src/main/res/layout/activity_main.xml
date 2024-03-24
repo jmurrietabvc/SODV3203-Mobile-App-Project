@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/logo_splash"
+        android:transitionName="logo_img" />
+
+    <TextView
+        android:id="@+id/tv_nameApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/aremat_font"
+        android:gravity="center"
+        android:text="@string/nameApp"
+        android:textColor="@color/title"
+        android:textSize="60dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_sub_nameApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/aremat_font"
+        android:gravity="center"
+        android:text="Travella"
+        android:textColor="@color/title"
+        android:textSize="25dp"
+        android:transitionName="textnameApp" />
+
+</LinearLayout>
