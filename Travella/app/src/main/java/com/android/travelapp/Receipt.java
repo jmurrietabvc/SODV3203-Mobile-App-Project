@@ -31,7 +31,7 @@ public class Receipt extends AppCompatActivity {
     AlertDialog dialog;
     SharedPreferences preferences;
 
-    String CHANNEL_ID = "Travel App v2.6 (BETA)";
+    String CHANNEL_ID = "Travella";
     private static final String KEY_NAME = "name";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_PHONE = "phone";
@@ -75,9 +75,9 @@ public class Receipt extends AppCompatActivity {
             email.setText(emailView);
             phone.setText(phoneView);
             nameTour.setText(nameTourView);
-            priceTour.setText("Rp"+priceView);
-            totalPeople.setText(totalItemsView + " Orang");
-            totalPrice.setText("Rp"+totalPriceView);
+            priceTour.setText("CAD"+priceView);
+            totalPeople.setText(totalItemsView);
+            totalPrice.setText("CAD"+totalPriceView);
         }
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +90,7 @@ public class Receipt extends AppCompatActivity {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(Receipt.this, "Success Booked Ticket", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Receipt.this, "Success Booked Tour", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(Receipt.this, Receipt.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 PendingIntent pendingIntent = PendingIntent.getActivity(Receipt.this, 0, intent, 0);
