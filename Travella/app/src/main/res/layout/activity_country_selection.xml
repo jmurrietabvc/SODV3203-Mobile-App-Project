@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="16dp"
+    android:background="@color/white"
     tools:context=".CountrySelectionActivity">
 
     <TextView
@@ -16,25 +17,19 @@
         android:textStyle="bold"
         android:layout_marginBottom="16dp"/>
 
+
     <Spinner
         android:id="@+id/country_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/countries"/>
+        android:entries="@array/countries"
+        android:minHeight="48dp"
+        android:gravity="center"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select a City"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"/>
 
-    <Spinner
-        android:id="@+id/city_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+
+
+
 
     <Button
         android:id="@+id/select_button"

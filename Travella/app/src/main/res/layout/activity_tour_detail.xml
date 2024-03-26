@@ -64,10 +64,11 @@
                         android:id="@+id/btn_img_loc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/button_background"
                         android:contentDescription="@null"
                         android:elevation="6dp"
                         app:srcCompat="@drawable/ic_loc"
-                        android:background="@drawable/button_background"/>
+                        tools:ignore="SpeakableTextPresentCheck" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -84,7 +85,8 @@
                     android:fontFamily="sans-serif"
                     android:text="Desc Tour"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    tools:ignore="TextSizeCheck" />
             </LinearLayout>
 
             <LinearLayout

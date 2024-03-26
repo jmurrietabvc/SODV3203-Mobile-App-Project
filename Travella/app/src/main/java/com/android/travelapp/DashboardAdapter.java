@@ -43,7 +43,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.nameTextView.setText(names.get(position));
         holder.descriptionTextView.setText(descriptions.get(position));
-        holder.priceTextView.setText("$" + prices.get(position));
+        holder.priceTextView.setText("CAD" + prices.get(position));
         holder.locationTextView.setText(locations.get(position));
         Glide.with(context).load(imageUrls.get(position)).into(holder.imageView);
     }

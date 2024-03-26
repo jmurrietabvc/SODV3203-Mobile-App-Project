@@ -1,19 +1,11 @@
 package com.android.travelapp;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +13,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.bumptech.glide.Glide;
 
@@ -93,7 +90,7 @@ public class Receipt extends AppCompatActivity {
                                 Toast.makeText(Receipt.this, "Success Booked Tour", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(Receipt.this, Receipt.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                PendingIntent pendingIntent = PendingIntent.getActivity(Receipt.this, 0, intent, 0);
+                                PendingIntent pendingIntent = PendingIntent.getActivity(Receipt.this, 0, intent, PendingIntent.FLAG_MUTABLE);
 
                                 NotificationCompat.Builder builder = new NotificationCompat.Builder(Receipt.this, CHANNEL_ID)
                                         .setSmallIcon(R.drawable.ic_ticket)
@@ -101,10 +98,10 @@ public class Receipt extends AppCompatActivity {
                                         .setStyle(new NotificationCompat.BigTextStyle()
                                                 .bigText("\nYour Ticket Successfully Booked!\n" +
                                                         "=====================================" + "\n" +
-                                                        "Nama Pemesan\t: "+nameView+ "\n" +
-                                                        "Nama Tempat\t: "+nameTourView+ "\n" +
-                                                        "Total Orang\t: "+totalItemsView+ "\n" +
-                                                        "Total Harga\t: Rp"+totalPriceView+ "\n" +
+                                                        "Customer Name\t: "+nameView+ "\n" +
+                                                        "Tour Name\t: "+nameTourView+ "\n" +
+                                                        "Total People\t: "+totalItemsView+ "\n" +
+                                                        "Total Price\t: CAD"+totalPriceView+ "\n" +
                                                         "====================================="))
                                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                                         // Set the intent that will fire when the user taps the notification

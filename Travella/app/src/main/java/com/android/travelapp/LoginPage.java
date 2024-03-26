@@ -58,21 +58,21 @@ public class LoginPage extends AppCompatActivity {
         txtPass.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
-                if (keyEvent.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER){
+                if (keyEvent.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                     String userValue = txtUser.getEditText().getText().toString();
                     String emailValue = txtUser.getEditText().getText().toString();
                     String passValue = txtPass.getEditText().getText().toString();
 
-                    String loginUser = preferences.getString("user","");
-                    String emailUser = preferences.getString("email","");
-                    String loginPass = preferences.getString("pass","");
+                    String loginUser = preferences.getString("user", "");
+                    String emailUser = preferences.getString("email", "");
+                    String loginPass = preferences.getString("pass", "");
 
-                    if (userValue.equals(loginUser) && passValue.equals(loginPass) || emailValue.equals(emailUser) && passValue.equals(loginPass)){
+                    if (userValue.equals(loginUser) && passValue.equals(loginPass) || emailValue.equals(emailUser) && passValue.equals(loginPass)) {
                         Intent intent = new Intent(LoginPage.this, CountrySelectionActivity.class);
                         startActivity(intent);
                         finish();
                         Toast.makeText(LoginPage.this, "Login", Toast.LENGTH_LONG).show();
-                    }else {
+                    } else {
                         Toast.makeText(LoginPage.this, "Username or Password doesn't match", Toast.LENGTH_LONG).show();
                     }
                 }
@@ -83,21 +83,41 @@ public class LoginPage extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userValue = txtUser.getEditText().getText().toString();
-                String emailValue = txtUser.getEditText().getText().toString();
-                String passValue = txtPass.getEditText().getText().toString();
+                try {
+                    String userValue = txtUser.getEditText().getText().toString();
+                    String emailValue = txtUser.getEditText().getText().toString();
+                    String passValue = txtPass.getEditText().getText().toString();
 
-                String loginUser = preferences.getString("user","");
-                String emailUser = preferences.getString("email","");
-                String loginPass = preferences.getString("pass","");
+                    String loginUser = preferences.getString("user", "");
+                    String emailUser = preferences.getString("email", "");
+                    String loginPass = preferences.getString("pass", "");
 
-                if (userValue.equals(loginUser) && passValue.equals(loginPass) || emailValue.equals(emailUser) && passValue.equals(loginPass)){
-                    Intent intent = new Intent(LoginPage.this, Dashboard.class);
+                    if ((userValue.equals(loginUser) || emailValue.equals(emailUser)) && passValue.equals(loginPass)) {
+                        Intent intent = new Intent(LoginPage.this, CountrySelectionActivity.class);
+                        startActivity(intent);
+                        finish();
+                        Toast.makeText(LoginPage.this, "Login", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(LoginPage.this, "Username or Password doesn't match", Toast.LENGTH_LONG).show();
+                    }
+                } catch (Exception e) {
+                    Log.e("LoginPage", "Error during login: " + e.getMessage());
+                    e.printStackTrace(); // Log the stack trace
+                    Toast.makeText(LoginPage.this, "An error occurred during login", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent intent = new Intent(LoginPage.this, SignUp.class);
                     startActivity(intent);
-                    finish();
-                    Toast.makeText(LoginPage.this, "Login", Toast.LENGTH_LONG).show();
-                }else {
-                    Toast.makeText(LoginPage.this, "Username or Password doesn't match", Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
+                    Log.e("LoginPage", "Error starting SignUp activity: " + e.getMessage());
+                    Toast.makeText(LoginPage.this, "An error occurred", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -105,9 +125,14 @@ public class LoginPage extends AppCompatActivity {
         btnForgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
-                Intent intent = new Intent(LoginPage.this, ForgotPass.class);
-                startActivity(intent);
+                try {
+                    finish();
+                    Intent intent = new Intent(LoginPage.this, ForgotPass.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.e("LoginPage", "Error starting ForgotPass activity: " + e.getMessage());
+                    Toast.makeText(LoginPage.this, "An error occurred", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

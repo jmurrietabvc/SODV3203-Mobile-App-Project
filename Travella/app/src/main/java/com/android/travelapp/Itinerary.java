@@ -40,13 +40,10 @@ public class Itinerary extends AppCompatActivity {
 
         preferences = getSharedPreferences("userInfo", 0);
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Itinerary.this, Dashboard.class);
-                startActivity(intent);
-                finish();
-            }
+        btnBack.setOnClickListener(view -> {
+            Intent intent = new Intent(Itinerary.this, Dashboard.class);
+            startActivity(intent);
+            finish();
         });
 
         String nameView = preferences.getString(KEY_NAME, null);
