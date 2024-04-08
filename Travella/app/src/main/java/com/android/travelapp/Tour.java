@@ -5,16 +5,16 @@ import android.os.Parcelable;
 
 public class Tour implements Parcelable{
     private String imageUrl;
-    //private String country;
+    private String country;
     private String name;
     private double price;
     private int totalItems;
     private double totalPrice;
 
     // Constructor
-    public Tour(String imageUrl, String name, double price, int totalItems, double totalPrice) {
+    public Tour(String imageUrl, String country, String name, double price, int totalItems, double totalPrice) {
         this.imageUrl = imageUrl;
-        //this.country = country;
+        this.country = country;
         this.name = name;
         this.price = price;
         this.totalItems = totalItems;
@@ -23,7 +23,7 @@ public class Tour implements Parcelable{
 
     protected Tour(Parcel in) {
         imageUrl = in.readString();
-        //country = in.readString();
+        country = in.readString();
         name = in.readString();
         price = in.readDouble();
         totalItems = in.readInt();
@@ -50,7 +50,7 @@ public class Tour implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(imageUrl);
-        //dest.writeString(country);
+        dest.writeString(country);
         dest.writeString(name);
         dest.writeDouble(price);
         dest.writeInt(totalItems);
@@ -66,9 +66,9 @@ public class Tour implements Parcelable{
         this.imageUrl = imageUrl;
     }
 
-    /*public String getCountry() {return country;}
+    public String getCountry() {return country;}
 
-    public void setCountry(String country){this.country = country;}*/
+    public void setCountry(String country){this.country = country;}
 
     public String getName() {
         return name;

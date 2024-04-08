@@ -42,6 +42,8 @@ public class Receipt extends AppCompatActivity {
     private static final String KEY_COUNT_ITEMS = "count_items";
     private static final String KEY_PRICE_TOUR = "price_tour";
 
+    //private static String selectedCountry;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -162,12 +164,12 @@ public class Receipt extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Toast.makeText(Receipt.this, "Success Booked Tour", Toast.LENGTH_LONG).show();
                                 // 1. Create a Tour object using the tour details from SharedPreferences
-                                Tour tour = new Tour(imgTourView, nameTourView, Double.parseDouble(priceView), Integer.parseInt(totalItemsView), Double.parseDouble(totalPriceView));
+                                Tour tour = new Tour(imgTourView, selectedCountry, nameTourView, Double.parseDouble(priceView), Integer.parseInt(totalItemsView), Double.parseDouble(totalPriceView));
 
                                 // 2. Pass the Tour object to the Itinerary activity without starting it
                                 Intent intent = new Intent(Receipt.this, Itinerary.class);
                                 intent.putExtra("tour", tour); // Pass the Tour object using Intent extras
-                                intent.putExtra("selected_country", selectedCountry);
+                                //intent.putExtra("selected_country", selectedCountry);
                                 startActivity(intent);
 
                                 PendingIntent pendingIntent = PendingIntent.getActivity(Receipt.this, 0, intent, PendingIntent.FLAG_MUTABLE);
