@@ -131,9 +131,9 @@ public class Dashboard extends AppCompatActivity {
     private void getData() {
         Intent intent = getIntent();
         //if (intent != null && intent.hasExtra("selected_country")) {
-            String selectedCountry = intent.getStringExtra("selected_country");
-            if(selectedCountry != null) filterLocations(selectedCountry);
-            setupRecyclerView();
+        String selectedCountry = intent.getStringExtra("selected_country");
+        if(selectedCountry != null) filterLocations(selectedCountry);
+        setupRecyclerView();
         //}
     }
 
@@ -188,43 +188,178 @@ public class Dashboard extends AppCompatActivity {
             al_location.add("Galapagos Islands, Ecuador");
             //al_country.add("Ecuador");
 
-            al_img_tour.add("https://example.com/ecuador_attraction2.jpg");
+            al_img_tour.add("https://dreamkapture.com/dreamkapturehostel/wp-content/uploads/2022/12/Puerto-Santa-Ana-WEB.jpg");
             al_name_tour.add("Puerto Santa Ana");
             al_desc_tour.add("Discover the incredible biodiversity of the Amazon Rainforest.");
             al_price_tour.add(40);
             al_location.add("Guayaquil, Ecuador");
             //al_country.add("Ecuador");
 
-            al_img_tour.add("https://example.com/ecuador_attraction3.jpg");
+            al_img_tour.add("https://media.tacdn.com/media/attractions-splice-spp-674x446/06/7b/28/57.jpg");
             al_name_tour.add("Quilotoa Crater Lake");
             al_desc_tour.add("Marvel at the stunning beauty of Quilotoa Crater Lake.");
             al_price_tour.add(30);
             al_location.add("Quilotoa, Ecuador");
             //al_country.add("Ecuador");
 
-            al_img_tour.add("https://www.liveabout.com/thmb/AtSW09j4n8ud4_vRGTFcHhnuffM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/16259645679_58f594d231_k-5ae7eb73c5542e0039141041.jpg");
-            al_name_tour.add("Chimborazo Vulcano");
+            al_img_tour.add("https://upload.wikimedia.org/wikipedia/commons/5/5e/Vista_del_Volc%C3%A1n_Chimborazo_desde_Riobamba.jpg");
+            al_name_tour.add("Chimborazo Volcano");
             al_desc_tour.add("Experience the vibrant culture of Otavalo Market.");
             al_price_tour.add(10);
             al_location.add("Chimborazo, Ecuador");
             //al_country.add("Ecuador");
         }
         else if (selectedCountry.equals("USA")) {
+            al_img_tour.add("https://npf-prod.imgix.net/uploads/shutterstock_97706066_1.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=900&q=80&w=1600");
+            al_name_tour.add("Grand Canyon");
+            al_desc_tour.add("Marvel at the awe-inspiring beauty of the Grand Canyon.");
+            al_price_tour.add(35);
+            al_location.add("Arizona, USA");
+
+            al_img_tour.add("https://www.worldatlas.com/upload/f4/d8/7b/shutterstock-1397031029.jpg");
+            al_name_tour.add("Statue of Liberty");
+            al_desc_tour.add("Visit the iconic Statue of Liberty in New York Harbor.");
+            al_price_tour.add(25);
+            al_location.add("New York City, USA");
+
+            al_img_tour.add("https://jacksonholewildlifesafaris.com/wp-content/uploads/2019/09/yellowstone-waterfall-hero-1440x810.jpg");
+            al_name_tour.add("Yellowstone National Park");
+            al_desc_tour.add("Explore the natural wonders of Yellowstone National Park.");
+            al_price_tour.add(40);
+            al_location.add("Wyoming, USA");
+
+            al_img_tour.add("https://insidethemagic.net/wp-content/uploads/2023/08/disneyland-resort-california-Credit-Disney.png");
+            al_name_tour.add("Disneyland");
+            al_desc_tour.add("Experience the magic of Disneyland.");
+            al_price_tour.add(50);
+            al_location.add("California, USA");
 
         }
         else if (selectedCountry.equals("France")) {
+            al_img_tour.add("https://www.travelandleisure.com/thmb/SPUPzO88ZXq6P4Sm4mC5Xuinoik=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/eiffel-tower-paris-france-EIFFEL0217-6ccc3553e98946f18c893018d5b42bde.jpg");
+            al_name_tour.add("Eiffel Tower");
+            al_desc_tour.add("Enjoy panoramic views from the top of the Eiffel Tower.");
+            al_price_tour.add(30);
+            al_location.add("Eiffel Tower, France");
 
+            al_img_tour.add("https://media.architecturaldigest.com/photos/5900cc370638dd3b70018b33/16:9/w_2560%2Cc_limit/Secrets%2520of%2520Louvre%25201.jpg");
+            al_name_tour.add("Louvre Museum");
+            al_desc_tour.add("Explore world-famous art at the Louvre Museum.");
+            al_price_tour.add(20);
+            al_location.add("Louvre Museum, France");
+
+            al_img_tour.add("https://media.cntraveler.com/photos/5a91a36760543c4ae96c2ec7/master/pass/Versailles_Getty_2018_GettyImages-154772942.jpg");
+            al_name_tour.add("Versailles Palace");
+            al_desc_tour.add("Discover the opulence of Versailles Palace.");
+            al_price_tour.add(25);
+            al_location.add("Versailles Palace, France");
+
+            al_img_tour.add("https://i0.wp.com/www.afrenchcollection.com/wp-content/uploads/2021/08/Mont-Saint-Michel-sunset-1024-x-695-1.jpg");
+            al_name_tour.add("Mont Saint-Michel");
+            al_desc_tour.add("Explore the historic abbey of Mont Saint-Michel.");
+            al_price_tour.add(15);
+            al_location.add("Mont Saint-Michel, France");
         }
         else if (selectedCountry.equals("Italy")) {
+            al_img_tour.add("https://cdn.britannica.com/36/162636-050-932C5D49/Colosseum-Rome-Italy.jpg");
+            al_name_tour.add("Colosseum");
+            al_desc_tour.add("Step back in time at the ancient Colosseum.");
+            al_price_tour.add(25);
+            al_location.add("Colosseum, Italy");
 
+            al_img_tour.add("https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/27/5b/0f.jpg");
+            al_name_tour.add("Venice Canals");
+            al_desc_tour.add("Take a gondola ride through the picturesque Venice Canals.");
+            al_price_tour.add(30);
+            al_location.add("Venice Canals , Italy");
+
+            al_img_tour.add("https://www.italiandualcitizenship.net/wp-content/uploads/2019/03/Cathedral-of-Santa-Maria-del-Fiore-Duomo-Florence-Italy.jpg.webp");
+            al_name_tour.add("Cathedral of Santa Maria del Fiore");
+            al_desc_tour.add("Admire the stunning architecture of Florence Cathedral.");
+            al_price_tour.add(20);
+            al_location.add("Cathedral of Santa Maria del Fiore , Italy");
+
+            al_img_tour.add("https://www.grunge.com/img/gallery/heres-whats-really-inside-the-leaning-tower-of-pisa/l-intro-1632251432.jpg");
+            al_name_tour.add("Leaning Tower of Pisa");
+            al_desc_tour.add("See the iconic Leaning Tower of Pisa.");
+            al_price_tour.add(15);
+            al_location.add("Leaning Tower of Pisa, Italy");
         }
         else if (selectedCountry.equals("Greece")) {
+            al_img_tour.add("https://cdn.audleytravel.com/1050/749/79/7994359-acropolis-athens.webp");
+            al_name_tour.add("Acropolis of Athens");
+            al_desc_tour.add("Explore the ancient ruins of the Acropolis of Athens.");
+            al_price_tour.add(25);
+            al_location.add("Acropolis of Athens, Greece");
 
+            al_img_tour.add("https://a.cdn-hotels.com/gdcs/production18/d1838/041ae6b1-0a88-4c22-a648-53a22dd4a006.jpg");
+            al_name_tour.add("Santorini");
+            al_desc_tour.add("Experience the stunning beauty of Santorini.");
+            al_price_tour.add(35);
+            al_location.add("Santorini, Greece");
+
+            al_img_tour.add("https://a.cdn-hotels.com/gdcs/production44/d14/75a0e859-0146-4d78-8097-211d5ce89278.jpg?impolicy=fcrop&w=800&h=533&q=medium");
+            al_name_tour.add("Mykonos");
+            al_desc_tour.add("Enjoy the vibrant nightlife of Mykonos.");
+            al_price_tour.add(30);
+            al_location.add("Mykonos, Greece");
+
+            al_img_tour.add("https://idsb.tmgrup.com.tr/ly/uploads/images/2024/01/16/310379.jpg");
+            al_name_tour.add("Meteora");
+            al_desc_tour.add("Marvel at the monasteries of Meteora.");
+            al_price_tour.add(20);
+            al_location.add("Meteora, Greece");
         }
         else if (selectedCountry.equals("Japan")) {
+            al_img_tour.add("https://gaijinpot.scdn3.secure.raxcdn.com/app/uploads/sites/6/2016/02/Mount-Fuji-New.jpg");
+            al_name_tour.add("Mount Fuji");
+            al_desc_tour.add("Hike to the summit of iconic Mount Fuji.");
+            al_price_tour.add(30);
+            al_location.add("Mount Fuji, Japan");
 
+            al_img_tour.add("https://www.japanrailpassnow.com/wp-content/uploads/2016/12/1000x667xHimeji-Castle1.jpg.pagespeed.ic.8QMnSyijG3.jpg");
+            al_name_tour.add("Himeji Castle");
+            al_desc_tour.add("One of Japan's most beautiful and well-preserved castles.");
+            al_price_tour.add(40);
+            al_location.add("Himeji Castle, Japan");
+
+            al_img_tour.add("https://boutiquejapan.com/wp-content/uploads/2019/07/yasaka-pagoda-higashiyama-kyoto-japan.jpg");
+            al_name_tour.add("Kyoto Temples");
+            al_desc_tour.add("Explore the serene beauty of Kyoto's temples.");
+            al_price_tour.add(25);
+            al_location.add("Kyoto, Japan");
+
+            al_img_tour.add("https://i.ytimg.com/vi/QXnDG6K4m40/maxresdefault.jpg");
+            al_name_tour.add("Nara Park");
+            al_desc_tour.add("Home to friendly deer and several important temples and shrines.");
+            al_price_tour.add(20);
+            al_location.add("Nara Park, Japan");
         }
         else if (selectedCountry.equals("Australia")) {
+
+            al_img_tour.add("https://cdn.britannica.com/64/155864-050-34FBD7A2/view-Great-Barrier-Reef-Australia-coast.jpg");
+            al_name_tour.add("Great Barrier Reef");
+            al_desc_tour.add("Explore the world's largest coral reef system.");
+            al_price_tour.add(45);
+            al_location.add("Great Barrier Reef, Australia");
+
+            al_img_tour.add("https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Sydneyoperahouse_at_night.jpg/2560px-Sydneyoperahouse_at_night.jpg");
+            al_name_tour.add("Sydney Opera House");
+            al_desc_tour.add("Visit the iconic performing arts center in Sydney.");
+            al_price_tour.add(35);
+            al_location.add("Sydney Opera House, Australia");
+
+            al_img_tour.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSAdhv-iRE1jHSKNT210-UENwJn3_DS2z8SnQZ9Zuv3A&s");
+            al_name_tour.add("Uluru");
+            al_desc_tour.add("Witness the stunning natural beauty of Uluru.");
+            al_price_tour.add(30);
+            al_location.add("Uluru, Australia");
+
+            al_img_tour.add("https://content.api.news/v3/images/bin/ebe47f1a8d82caebd7845a099f62361e");
+            al_name_tour.add("Great Ocean Road");
+            al_desc_tour.add("Drive along one of the world's most scenic coastal routes.");
+            al_price_tour.add(40);
+            al_location.add("Great Ocean Road, Australia");
 
         }
         RecycleViewAdapterProcess();
