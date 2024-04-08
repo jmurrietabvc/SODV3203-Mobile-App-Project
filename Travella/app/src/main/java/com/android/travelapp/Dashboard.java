@@ -19,11 +19,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.Dash;
+
 import java.util.ArrayList;
 
 public class Dashboard extends AppCompatActivity {
     TextView txtNama, txtEmail;
-    Button checkTickets;
+    Button checkTickets, btnChange;
 
     AlertDialog alertDialog;
     MenuInflater inflater;
@@ -33,6 +35,7 @@ public class Dashboard extends AppCompatActivity {
     private ArrayList<String> al_desc_tour = new ArrayList<>();
     private ArrayList<Integer> al_price_tour = new ArrayList<>();
     private ArrayList<String> al_location = new ArrayList<>();
+    //private ArrayList<String> al_country = new ArrayList<>();
 
 
 
@@ -41,22 +44,29 @@ public class Dashboard extends AppCompatActivity {
     private static final String KEY_NAME = "name";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_PHONE = "phone";
+    //private static final String KEY_NAME_COUNTRY = "name_country";
     private static final String KEY_TOTAL_PRICE = "total_price";
     private static final String KEY_NAME_TOUR = "name_tour";
     private static final String KEY_COUNT_ITEMS = "count_items";
 
+    private String selectedCountry;
+
     private Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        getData();
+        //getData();
 
         txtNama = findViewById(R.id.tv_fullname);
         txtEmail = findViewById(R.id.tv_email);
         checkTickets = findViewById(R.id.check_ticket);
+        btnChange = findViewById(R.id.btn_change);
+
+        selectedCountry = getIntent().getStringExtra("selected_country");
 
         checkTickets.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,11 +75,13 @@ public class Dashboard extends AppCompatActivity {
                 String emailView = preferences.getString(KEY_EMAIL, null);
                 String phoneView = preferences.getString(KEY_PHONE, null);
 
+                //String nameCountry = preferences.getString(KEY_NAME_COUNTRY, null);
                 String nameTourView = preferences.getString(KEY_NAME_TOUR, null);
                 String totalItemsView = preferences.getString(KEY_COUNT_ITEMS, null);
                 String totalPriceView = preferences.getString(KEY_TOTAL_PRICE, null);
 
-                if (nameView == "" || emailView == "" || phoneView == "" || nameTourView == "" || totalItemsView == "" || totalPriceView == "" ||
+
+                if (nameView == "" || emailView == "" || phoneView == "" || totalItemsView == "" || totalPriceView == "" ||
                         nameView == null || emailView == null || phoneView == null || nameTourView == null || totalItemsView == null || totalPriceView == null) {
                     AlertDialog dialog = new AlertDialog.Builder(Dashboard.this)
                             .setTitle("Check Tickets")
@@ -79,6 +91,7 @@ public class Dashboard extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     Intent intent = new Intent(Dashboard.this, Dashboard.class);
+                                    intent.putExtra("selected_country", selectedCountry);
                                     startActivity(intent);
                                     finish();
                                 }
@@ -90,13 +103,22 @@ public class Dashboard extends AppCompatActivity {
             }
         });
 
+        btnChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Dashboard.this, CountrySelectionActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         preferences = getSharedPreferences("userInfo", 0);
 
-        String namaView = preferences.getString(KEY_NAME, null);
+        String nameView = preferences.getString(KEY_NAME, null);
         String emailView = preferences.getString(KEY_EMAIL, null);
 
-        if (namaView != null || emailView != null) {
-            txtNama.setText(namaView);
+        if (nameView != null || emailView != null) {
+            txtNama.setText(nameView);
             txtEmail.setText(emailView);
         }
 
@@ -106,14 +128,13 @@ public class Dashboard extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-
     private void getData() {
         Intent intent = getIntent();
-        if (intent != null && intent.hasExtra("selected_country")) {
+        //if (intent != null && intent.hasExtra("selected_country")) {
             String selectedCountry = intent.getStringExtra("selected_country");
-            filterLocations(selectedCountry);
+            if(selectedCountry != null) filterLocations(selectedCountry);
             setupRecyclerView();
-        }
+        //}
     }
 
     private void filterLocations(String selectedCountry) {
@@ -123,6 +144,7 @@ public class Dashboard extends AppCompatActivity {
         al_desc_tour.clear();
         al_price_tour.clear();
         al_location.clear();
+        //al_country.clear();
 
         // Populate with filtered data based on selected country
         if (selectedCountry.equals("Canada")) {
@@ -132,24 +154,31 @@ public class Dashboard extends AppCompatActivity {
             al_desc_tour.add("Experience the breathtaking beauty of Niagara Falls.");
             al_price_tour.add(25);
             al_location.add("Niagara Falls, Canada");
+            //al_country.add("Canada");
 
             al_img_tour.add("https://upload.wikimedia.org/wikipedia/commons/c/c5/Moraine_Lake_17092005.jpg");
             al_name_tour.add("Banff National Park");
             al_desc_tour.add("Explore the stunning landscapes of Banff National Park.");
             al_price_tour.add(30);
             al_location.add("Banff, Canada");
+            //al_country.add("Canada");
+
 
             al_img_tour.add("https://torontolife.com/wp-content/uploads/2022/07/CNT-Exterior-Night-Lighting-201808-02.jpg");
             al_name_tour.add("CN Tower");
             al_desc_tour.add("Enjoy panoramic views from the top of the CN Tower.");
             al_price_tour.add(20);
             al_location.add("Toronto, Canada");
+            //al_country.add("Canada");
+
 
             al_img_tour.add("https://healthquotes.ca/wp-content/uploads/2020/09/chateau-castle.jpg");
             al_name_tour.add("Old Quebec");
             al_desc_tour.add("Discover the historic charm of Old Quebec City.");
             al_price_tour.add(15);
             al_location.add("Quebec City, Canada");
+            //al_country.add("Canada");
+
         } else if (selectedCountry.equals("Ecuador")) {
             // Attractions for Ecuador
             al_img_tour.add("https://www.travelandleisure.com/thmb/waC7nEboS_-sffrP8-ppPSnWPV0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-674781548-5c2121a846e0fb00011ebaec.jpg");
@@ -157,24 +186,28 @@ public class Dashboard extends AppCompatActivity {
             al_desc_tour.add("Explore the unique wildlife of the Galapagos Islands.");
             al_price_tour.add(50);
             al_location.add("Galapagos Islands, Ecuador");
+            //al_country.add("Ecuador");
 
             al_img_tour.add("https://example.com/ecuador_attraction2.jpg");
             al_name_tour.add("Puerto Santa Ana");
             al_desc_tour.add("Discover the incredible biodiversity of the Amazon Rainforest.");
             al_price_tour.add(40);
             al_location.add("Guayaquil, Ecuador");
+            //al_country.add("Ecuador");
 
             al_img_tour.add("https://example.com/ecuador_attraction3.jpg");
             al_name_tour.add("Quilotoa Crater Lake");
             al_desc_tour.add("Marvel at the stunning beauty of Quilotoa Crater Lake.");
             al_price_tour.add(30);
             al_location.add("Quilotoa, Ecuador");
+            //al_country.add("Ecuador");
 
             al_img_tour.add("https://www.liveabout.com/thmb/AtSW09j4n8ud4_vRGTFcHhnuffM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/16259645679_58f594d231_k-5ae7eb73c5542e0039141041.jpg");
             al_name_tour.add("Chimborazo Vulcano");
             al_desc_tour.add("Experience the vibrant culture of Otavalo Market.");
             al_price_tour.add(10);
             al_location.add("Chimborazo, Ecuador");
+            //al_country.add("Ecuador");
         }
         else if (selectedCountry.equals("USA")) {
 
@@ -199,14 +232,14 @@ public class Dashboard extends AppCompatActivity {
 
     private void setupRecyclerView() {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        RecycleViewAdapter adapter = new RecycleViewAdapter(al_img_tour, al_name_tour, al_desc_tour, al_price_tour, al_location, this);
+        RecycleViewAdapter adapter = new RecycleViewAdapter(al_img_tour, al_name_tour, al_desc_tour, al_price_tour, al_location, this, selectedCountry);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void RecycleViewAdapterProcess() {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        RecycleViewAdapter adapter = new RecycleViewAdapter(al_img_tour, al_name_tour, al_desc_tour, al_price_tour, al_location, this);
+        RecycleViewAdapter adapter = new RecycleViewAdapter(al_img_tour, al_name_tour, al_desc_tour, al_price_tour, al_location, this, selectedCountry);
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

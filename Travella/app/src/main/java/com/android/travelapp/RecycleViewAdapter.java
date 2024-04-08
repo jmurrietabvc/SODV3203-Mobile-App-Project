@@ -20,18 +20,23 @@ import java.util.ArrayList;
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.ViewHolder> {
     private ArrayList<String> al_img_tour = new ArrayList<>();
     private ArrayList<String> al_name_tour = new ArrayList<>();
+    //private ArrayList<String> al_country = new ArrayList<>();
     private ArrayList<String> al_desc_tour = new ArrayList<>();
     private ArrayList<Integer> al_price_tour = new ArrayList<>();
     private ArrayList<String> al_location = new ArrayList<>();
     private Context context;
 
-    public RecycleViewAdapter(ArrayList<String>al_img_tour, ArrayList<String>al_name_tour, ArrayList<String>al_desc_tour, ArrayList<Integer> al_price_tour, ArrayList<String> al_location, Context context){
+    private String selectedCountry;
+
+    public RecycleViewAdapter(ArrayList<String>al_img_tour, ArrayList<String>al_name_tour, ArrayList<String>al_desc_tour, ArrayList<Integer> al_price_tour, ArrayList<String> al_location, Context context, String selectedCountry){
         this.al_img_tour = al_img_tour;
+        //this.al_country = al_country;
         this.al_name_tour = al_name_tour;
         this.al_desc_tour = al_desc_tour;
         this.al_price_tour = al_price_tour;
         this.al_location = al_location;
         this.context = context;
+        this.selectedCountry = selectedCountry;
     }
 
     @NonNull
@@ -54,10 +59,12 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
             public void onClick(View view) {
                 Intent intent = new Intent(context, TourDetail.class);
                 intent.putExtra("imgTour", al_img_tour.get(position));
+                //intent.putExtra("nameCountry", al_country.get(position));
                 intent.putExtra("nameTour", al_name_tour.get(position));
                 intent.putExtra("descTour", al_desc_tour.get(position));
                 intent.putExtra("locTour", al_location.get(position));
                 intent.putExtra("priceTour", al_price_tour.get(position));
+                intent.putExtra("selected_country", selectedCountry);
 
                 context.startActivity(intent);
             }

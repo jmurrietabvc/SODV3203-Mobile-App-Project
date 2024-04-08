@@ -1,6 +1,7 @@
 package com.android.travelapp;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -24,7 +26,7 @@ import java.util.ArrayList;
 public class TourDetail extends AppCompatActivity {
     ImageView imgTour;
     TextView nameTour, descTour, priceTour, txtCount;
-    Button addCount, subCount, btnPay;
+    Button addCount, subCount, btnPay, btnReturn;
     ImageButton btnLoc;
     int mCount=1;
 
@@ -33,6 +35,7 @@ public class TourDetail extends AppCompatActivity {
 
     private static final String KEY_IMG_TOUR = "img_tour";
     private static final String KEY_TOTAL_PRICE = "total_price";
+    //private static final String KEY_NAME_COUNTRY = "name_country";
     private static final String KEY_NAME_TOUR = "name_tour";
     private static final String KEY_LOC = "loc_tour";
     private static final String KEY_COUNT_ITEMS = "count_items";
@@ -53,7 +56,24 @@ public class TourDetail extends AppCompatActivity {
         subCount = findViewById(R.id.btn_subCount);
         btnPay = findViewById(R.id.btn_pay);
         btnLoc = findViewById(R.id.btn_img_loc);
+        btnReturn = findViewById(R.id.btn_return);
 
+        String selectedCountry = getIntent().getStringExtra("selected_country");
+
+        //String nameCountryValue = preferences.getString(KEY_NAME_COUNTRY, null);
+
+        // Check if the country name is not null
+        /*if (nameCountryValue != null) {
+            // Create and show an AlertDialog to display the country name
+            new AlertDialog.Builder(this)
+                    .setTitle("Country Name")
+                    .setMessage("The selected country is: " + nameCountryValue)
+                    .setPositiveButton("OK", null) // You can add a button listener if needed
+                    .show();
+        } else {
+            // Handle the case where the country name is null
+            Toast.makeText(this, "Country name is not available", Toast.LENGTH_SHORT).show();
+        }*/
 
         txtCount.setText(Integer.toString(mCount));
 
@@ -91,18 +111,21 @@ public class TourDetail extends AppCompatActivity {
                 int price_tour = getIntent().getIntExtra("priceTour", 0);
                 int priceValue = price_tour;
                 String imageValue = getIntent().getStringExtra("imgTour");
+                //String nameCountryValue = preferences.getString(KEY_NAME_COUNTRY, null);
                 String nameTourValue = nameTour.getText().toString();
                 String totalItemsValue = txtCount.getText().toString();
                 String totalPriceValue = priceTour.getText().toString();
 
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString(KEY_IMG_TOUR, imageValue);
+                //editor.putString(KEY_NAME_COUNTRY, nameCountryValue);
                 editor.putString(KEY_NAME_TOUR, nameTourValue);
                 editor.putString(KEY_COUNT_ITEMS, totalItemsValue);
                 editor.putString(KEY_PRICE_TOUR, String.valueOf(priceValue));
                 editor.putString(KEY_TOTAL_PRICE, totalPriceValue);
                 editor.apply();
                 Intent intent = new Intent(TourDetail.this, Receipt.class);
+                intent.putExtra("selected_country", selectedCountry);
                 startActivity(intent);
                 finish();
             }
@@ -121,6 +144,17 @@ public class TourDetail extends AppCompatActivity {
                         startActivity(mapIntent);
                     }
                 }
+            }
+        });
+
+        btnReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //String selectedCountry = getIntent().getStringExtra("selected_country");
+                Intent intent = new Intent(TourDetail.this, Dashboard.class);
+                intent.putExtra("selected_country", selectedCountry);
+                startActivity(intent);
+                finish();
             }
         });
 

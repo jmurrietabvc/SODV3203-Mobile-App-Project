@@ -1,6 +1,7 @@
 package com.android.travelapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.View
     private ArrayList<Integer> prices;
     private ArrayList<String> locations;
 
-    public DashboardAdapter(Context context, ArrayList<String> imageUrls, ArrayList<String> names, ArrayList<String> descriptions, ArrayList<Integer> prices, ArrayList<String> locations) {
+    public DashboardAdapter(Context context, ArrayList<String> imageUrls, ArrayList<String> names, ArrayList<String> descriptions, ArrayList<Integer> prices, ArrayList<String> locations, String selectedCountry) {
         this.context = context;
         this.imageUrls = imageUrls;
         this.names = names;

@@ -12,6 +12,9 @@
         android:id="@+id/btn_return"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:text="Return to Dashboard" />
 
 
@@ -24,6 +27,7 @@
             android:id="@+id/img_tour"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:layout_margin="10dp"
             android:background="@color/grey"
             android:scaleType="centerCrop" />
 
@@ -170,9 +174,10 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/blue"
                     android:text="Book"
-                    android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
