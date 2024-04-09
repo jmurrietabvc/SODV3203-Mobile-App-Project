@@ -99,57 +99,7 @@ public class Receipt extends AppCompatActivity {
             totalPrice.setText("CAD"+totalPriceView);
         }
 
-        /*btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog = new AlertDialog.Builder(Receipt.this)
-                        .setIcon(android.R.drawable.ic_dialog_info)
-                        .setTitle("Message")
-                        .setMessage("\nAre you sure booked this spot?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(Receipt.this, "Success Booked Tour", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(Receipt.this, Itinerary.class);
-                                intent.putExtra(KEY_NAME_TOUR, nameTourView);
-                                intent.putExtra(KEY_COUNT_ITEMS, totalItemsView);
-                                intent.putExtra(KEY_TOTAL_PRICE, totalPriceView);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                PendingIntent pendingIntent = PendingIntent.getActivity(Receipt.this, 0, intent, PendingIntent.FLAG_MUTABLE);
 
-                                NotificationCompat.Builder builder = new NotificationCompat.Builder(Receipt.this, CHANNEL_ID)
-                                        .setSmallIcon(R.drawable.ic_ticket)
-                                        .setContentTitle("Detail Ticket")
-                                        .setStyle(new NotificationCompat.BigTextStyle()
-                                                .bigText("\nYour Ticket Successfully Booked!\n" +
-                                                        "=====================================" + "\n" +
-                                                        "Customer Name\t: "+nameView+ "\n" +
-                                                        "Tour Name\t: "+nameTourView+ "\n" +
-                                                        "Total People\t: "+totalItemsView+ "\n" +
-                                                        "Total Price\t: CAD"+totalPriceView+ "\n" +
-                                                        "====================================="))
-                                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                                        // Set the intent that will fire when the user taps the notification
-                                        .setContentIntent(pendingIntent)
-                                        .setAutoCancel(true);
-                                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(Receipt.this);
-                                notificationManager.notify(25, builder.build());
-                                finish();
-                            }
-                        })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                resetDetailTour();
-                                Toast.makeText(Receipt.this, "Fail Booked Ticket", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(Receipt.this, Dashboard.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        })
-                        .show();
-            }
-        });*/
 
 
         btnConfirm.setOnClickListener(new View.OnClickListener() {
@@ -210,16 +160,14 @@ public class Receipt extends AppCompatActivity {
 
     }
     private void createNotificationChannel() {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = getString(R.string.channel_name);
             String description = getString(R.string.channel_desc);
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
             channel.setDescription(description);
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
+
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
